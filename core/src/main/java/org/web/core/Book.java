@@ -11,6 +11,16 @@ public class Book {
     private Date publicationDate;
     private Nationality language;
 
+    public Book(int ISBN, String name, Subject subject, Author author, Publisher publisher, Date publicationDate, Nationality language) {
+        this.ISBN = ISBN;
+        this.name = name;
+        this.subject = subject;
+        this.author = author;
+        this.publisher = publisher;
+        this.publicationDate = publicationDate;
+        this.language = language;
+    }
+
     public void setISBN(int ISBN) {
         this.ISBN = ISBN;
     }

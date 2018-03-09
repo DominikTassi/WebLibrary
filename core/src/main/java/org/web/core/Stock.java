@@ -4,6 +4,11 @@ public class Stock {
     private Book book;
     private int piece;
 
+    public Stock(Book book, int piece) {
+        this.book = book;
+        this.piece = piece;
+    }
+
     public Book getBook() {
         return book;
     }
