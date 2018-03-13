@@ -32,6 +32,13 @@ public class Author {
         this.birth = birth;
     }
 
+    public Author(int id, String name, Date birth, Nationality nationality) {
+        this.id = id;
+        this.name = name;
+        this.birth = birth;
+        this.nationality = nationality;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
