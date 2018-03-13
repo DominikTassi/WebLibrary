@@ -1,4 +1,7 @@
-package org.web.core;
+package org.web.core.model;
+
+import org.web.core.exceptions.NoBooksException;
+import org.web.core.exceptions.NoUserException;
 
 import java.util.Collection;
 import java.util.Date;
@@ -9,10 +12,10 @@ public class Borrow {
     private User user;
     private Date date;
 
-    public Borrow(int id, Collection<Book> books, User user) {
+    public Borrow(int id, Collection<Book> books, User user) throws NoBooksException, NoUserException {
         this.id = id;
-        this.books = books;
-        this.user = user;
+        setBooks(books);
+        setUser(user);
         date = new Date();
     }
 
@@ -28,7 +31,9 @@ public class Borrow {
         return books;
     }
 
-    public void setBooks(Collection<Book> books) {
+    public void setBooks(Collection<Book> books) throws NoBooksException {
+        if (books == null || books.isEmpty())
+            throw new NoBooksException("No books was given");
         this.books = books;
     }
 
@@ -36,7 +41,9 @@ public class Borrow {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(User user) throws NoUserException {
+        if (user == null)
+            throw new NoUserException("No user was given");
         this.user = user;
     }
 

@@ -1,4 +1,6 @@
-package org.web.core;
+package org.web.core.model;
+
+import org.web.core.exceptions.*;
 
 import java.util.Date;
 
@@ -11,70 +13,83 @@ public class Book {
     private Date publicationDate;
     private Nationality language;
 
-    public Book(int ISBN, String name, Subject subject, Author author, Publisher publisher, Date publicationDate, Nationality language) {
-        this.ISBN = ISBN;
-        this.name = name;
-        this.subject = subject;
-        this.author = author;
-        this.publisher = publisher;
-        this.publicationDate = publicationDate;
+    public Book(int ISBN, String name, Subject subject, Author author, Publisher publisher, Date publicationDate, Nationality language) throws NoPublicationDateException, NoPublisherException, NoAuthorException, NoSubjectException, NoNameException, WrongISBNException {
+        setISBN(ISBN);
+        setName(name);
+        setSubject(subject);
+        setAuthor(author);
+        setPublisher(publisher);
+        setPublicationDate(publicationDate);
         this.language = language;
+
     }
 
-    public void setISBN(int ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
-    public void setLanguage(Nationality language) {
-        this.language = language;
-    }
-
-    public int getISBN(){
+    public int getISBN() {
         return ISBN;
     }
 
-    public String getName(){
+    public void setISBN(int ISBN) throws WrongISBNException {
+        if (ISBN < 0)
+            throw new WrongISBNException("ISBN can't be negative");
+        this.ISBN = ISBN;
+    }
+
+    public String getName() {
         return name;
+    }
+
+    public void setName(String name) throws NoNameException{
+        if (name == null || name == "")
+            throw new NoNameException("No name was given");
+        this.name = name;
     }
 
     public Subject getSubject() {
         return subject;
     }
 
+    public void setSubject(Subject subject) throws NoSubjectException {
+        if (subject == null)
+            throw new NoSubjectException("No subject was given");
+        this.subject = subject;
+    }
+
     public Author getAuthor() {
         return author;
+    }
+
+    public void setAuthor(Author author) throws NoAuthorException {
+        if (author == null)
+            throw new NoAuthorException("No author was given");
+        this.author = author;
     }
 
     public Publisher getPublisher() {
         return publisher;
     }
 
+    public void setPublisher(Publisher publisher) throws NoPublisherException {
+        if (publisher == null)
+            throw new NoPublisherException("No publisher was given");
+        this.publisher = publisher;
+    }
+
     public Date getPublicationDate() {
         return publicationDate;
     }
 
+    public void setPublicationDate(Date publicationDate) throws NoPublicationDateException {
+        if (publicationDate == null)
+            throw new NoPublicationDateException("No publication date was given");
+        this.publicationDate = publicationDate;
+    }
+
     public Nationality getLanguage() {
         return language;
+    }
+
+    public void setLanguage(Nationality language) {
+        this.language = language;
     }
 
     @Override

@@ -1,4 +1,7 @@
-package org.web.core;
+package org.web.core.model;
+
+import org.web.core.exceptions.NoBirthDateException;
+import org.web.core.exceptions.NoNameException;
 
 import java.util.Date;
 
@@ -20,7 +23,9 @@ public class Author {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws NoNameException {
+        if(name == null || name == "")
+            throw new NoNameException("No name was given");
         this.name = name;
     }
 
@@ -28,14 +33,16 @@ public class Author {
         return birth;
     }
 
-    public void setBirth(Date birth) {
+    public void setBirth(Date birth) throws NoBirthDateException {
+        if(birth == null)
+            throw new NoBirthDateException("No birthday was given");
         this.birth = birth;
     }
 
-    public Author(int id, String name, Date birth, Nationality nationality) {
+    public Author(int id, String name, Date birth, Nationality nationality) throws NoNameException, NoBirthDateException {
         this.id = id;
-        this.name = name;
-        this.birth = birth;
+        setName(name);
+        setBirth(birth);
         this.nationality = nationality;
     }
 

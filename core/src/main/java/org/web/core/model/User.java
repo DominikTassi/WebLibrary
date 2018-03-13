@@ -1,14 +1,17 @@
-package org.web.core;
+package org.web.core.model;
+
+import org.web.core.exceptions.NoNameException;
+import org.web.core.exceptions.NoPasswordException;
 
 public class User {
     private int id;
     private String name;
     private String password;
 
-    public User(int id, String name, String password) {
+    public User(int id, String name, String password) throws NoNameException, NoPasswordException {
         this.id = id;
-        this.name = name;
-        this.password = password;
+        setName(name);
+        setPassword(password);
     }
 
     public int getId() {
@@ -23,7 +26,9 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws NoNameException {
+        if(name == null || name == "")
+            throw new NoNameException("No name was given");
         this.name = name;
     }
 
@@ -31,7 +36,9 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws NoPasswordException {
+        if (password == null || password == "")
+            throw new NoPasswordException("No password was given");
         this.password = password;
     }
 

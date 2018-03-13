@@ -1,12 +1,14 @@
-package org.web.core;
+package org.web.core.model;
 
-public class Subject {
+import org.web.core.exceptions.NoNameException;
+
+public class Publisher {
     private int id;
     private String name;
 
-    public Subject(int id, String name) {
+    public Publisher(int id, String name) throws NoNameException {
         this.id = id;
-        this.name = name;
+        setName(name);
     }
 
     public int getId() {
@@ -21,19 +23,22 @@ public class Subject {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws NoNameException {
+        if (name == null || name == "")
+            throw new NoNameException("No name was given");
         this.name = name;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Subject subject = (Subject) o;
+        Publisher publisher = (Publisher) o;
 
-        if (id != subject.id) return false;
-        return name.equals(subject.name);
+        if (id != publisher.id) return false;
+        return name.equals(publisher.name);
     }
 
     @Override

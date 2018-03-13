@@ -1,19 +1,24 @@
-package org.web.core;
+package org.web.core.model;
+
+import org.web.core.exceptions.NoBookException;
+import org.web.core.exceptions.WrongPieceException;
 
 public class Stock {
     private Book book;
     private int piece;
 
-    public Stock(Book book, int piece) {
-        this.book = book;
-        this.piece = piece;
+    public Stock(Book book, int piece) throws WrongPieceException, NoBookException {
+        setBook(book);
+        setPiece(piece);
     }
 
     public Book getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(Book book) throws NoBookException {
+        if (book == null)
+            throw new NoBookException("No book was given");
         this.book = book;
     }
 
@@ -21,7 +26,9 @@ public class Stock {
         return piece;
     }
 
-    public void setPiece(int piece) {
+    public void setPiece(int piece) throws WrongPieceException {
+        if (piece < 0)
+            throw new WrongPieceException("Piece can't be negative");
         this.piece = piece;
     }
 
