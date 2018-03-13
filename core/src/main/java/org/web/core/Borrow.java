@@ -9,6 +9,13 @@ public class Borrow {
     private User user;
     private Date date;
 
+    public Borrow(int id, Collection<Book> books, User user) {
+        this.id = id;
+        this.books = books;
+        this.user = user;
+        date = new Date();
+    }
+
     public int getId() {
         return id;
     }

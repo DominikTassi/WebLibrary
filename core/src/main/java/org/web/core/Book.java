@@ -89,4 +89,32 @@ public class Book {
                 ", language=" + language +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (ISBN != book.ISBN) return false;
+        if (!name.equals(book.name)) return false;
+        if (!subject.equals(book.subject)) return false;
+        if (!author.equals(book.author)) return false;
+        if (!publisher.equals(book.publisher)) return false;
+        if (!publicationDate.equals(book.publicationDate)) return false;
+        return language == book.language;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ISBN;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + subject.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + publisher.hashCode();
+        result = 31 * result + publicationDate.hashCode();
+        result = 31 * result + language.hashCode();
+        return result;
+    }
 }
