@@ -9,6 +9,7 @@ public class Book {
     private String name;
     private Subject subject;
     private Author author;
+    private int price;
     private Publisher publisher;
     private Date publicationDate;
     private Nationality language;
@@ -82,6 +83,16 @@ public class Book {
         if (publicationDate == null)
             throw new NoPublicationDateException("No publication date was given");
         this.publicationDate = publicationDate;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) throws WrongPriceException {
+        if(price < 0)
+            throw new WrongPriceException("Price can't be negative");
+        this.price = price;
     }
 
     public Nationality getLanguage() {
