@@ -1,5 +1,6 @@
 package org.web.core.service;
 
+import org.web.core.exceptions.NoBorrowException;
 import org.web.core.model.Book;
 import org.web.core.model.Borrow;
 
@@ -7,10 +8,10 @@ import java.util.Collection;
 
 public interface BorrowService {
 
-    public Borrow getBorrow(int id);
-    public Borrow getBorrow(Borrow borrow);
-    public Collection<Borrow> getAllBorrow();
+    public Borrow getBorrow(int id) throws NoBorrowException;
+    public Borrow getBorrow(Borrow borrow) throws NoBorrowException;
+    public Collection<Borrow> getAllBorrow() throws NoBorrowException;
 
-    public Collection<Book> getBorrowedBookById(int id);
+    public Collection<Book> getBorrowedBooksById(int id) throws NoBorrowException;
     public void addBorrow(Borrow borrow);
 }
