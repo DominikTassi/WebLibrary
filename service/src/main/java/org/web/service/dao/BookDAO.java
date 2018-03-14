@@ -1,4 +1,7 @@
-package org.web.org.web.service.dao;
+package org.web.service.dao;
+
+import org.web.core.exceptions.*;
+import org.web.core.model.*;
 
 import java.util.Collection;
 import java.util.Date;
@@ -12,7 +15,7 @@ public interface BookDAO {
     public Collection<Book> getBooksByLanguage(Nationality language);
     public Collection<Book> getBooksByPrice(int price) throws WrongPriceException;
     public Collection<Book> getAllBook();
-    public Collection<Book> getBookByYear(Date date);
+    public Collection<Book> getBooksByYear(Date date);
 
     public void addBook(Book book) throws NoBookException;
     public boolean deleteBook(int id) throws NoBookException;

@@ -1,4 +1,4 @@
-package org.web.org.web.service.dao;
+package org.web.service.dao;
 
 import org.web.core.exceptions.NoBorrowException;
 import org.web.core.model.Book;

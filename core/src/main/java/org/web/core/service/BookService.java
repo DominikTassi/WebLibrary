@@ -15,7 +15,7 @@ public interface BookService {
     public Collection<Book> getBooksByLanguage(Nationality language);
     public Collection<Book> getBooksByPrice(int price) throws WrongPriceException;
     public Collection<Book> getAllBook();
-    public Collection<Book> getBookByYear(Date date);
+    public Collection<Book> getBooksByYear(Date date);
 
     public void addBook(Book book) throws NoBookException;
     public boolean deleteBook(int id) throws NoBookException;

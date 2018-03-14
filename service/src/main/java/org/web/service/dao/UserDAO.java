@@ -1,4 +1,4 @@
-package org.web.org.web.service.dao;
+package org.web.service.dao;
 
 import org.web.core.exceptions.NoUserException;
 import org.web.core.model.User;
@@ -11,7 +11,6 @@ public interface UserDAO {
 
     public Collection<User> getAllUser();
     public void addUser(User user);
-    public void addUser(String name);
 
     public boolean deleteUser(User user);
     public boolean deleteUser(int id);

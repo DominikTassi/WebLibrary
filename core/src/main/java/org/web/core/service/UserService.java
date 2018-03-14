@@ -11,7 +11,6 @@ public interface UserService {
 
     public Collection<User> getAllUser();
     public void addUser(User user);
-    public void addUser(String name);
 
     public boolean deleteUser(User user);
     public boolean deleteUser(int id);
