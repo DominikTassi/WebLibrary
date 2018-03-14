@@ -4,6 +4,8 @@ import org.web.core.model.Subject;
 import org.web.core.service.SubjectService;
 import org.web.service.dao.SubjectDAO;
 
+import java.util.Collection;
+
 public class SubjectServiceImpl implements SubjectService{
     private SubjectDAO subjectDAO = null;
 
@@ -17,6 +19,10 @@ public class SubjectServiceImpl implements SubjectService{
 
     public Subject getSubject(Subject subject) throws NoSubjectException {
         return subjectDAO.getSubject(subject);
+    }
+
+    public Collection<Subject> getAllSubject() {
+        return subjectDAO.getAllSubject();
     }
 
     public void addSubject(Subject subject) {
