@@ -8,6 +8,7 @@
   <modules>
     <module>core</module>
       <module>service</module>
+      <module>dao</module>
   </modules>
   <packaging>pom</packaging>
 
