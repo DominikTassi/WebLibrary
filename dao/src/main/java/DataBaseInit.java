@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBaseInit {
-
     protected static String url = "jdbc:sqlite:./database/" + "WebLibraryDB";
 
     public DataBaseInit(){
