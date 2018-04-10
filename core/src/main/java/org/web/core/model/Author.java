@@ -67,4 +67,14 @@ public class Author {
         result = 31 * result + nationality.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birth=" + birth +
+                ", nationality=" + nationality +
+                '}';
+    }
 }

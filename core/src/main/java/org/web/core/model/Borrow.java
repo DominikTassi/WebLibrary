@@ -54,4 +54,14 @@ public class Borrow {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Borrow{" +
+                "id=" + id +
+                ", books=" + books +
+                ", user=" + user +
+                ", date=" + date +
+                '}';
+    }
 }

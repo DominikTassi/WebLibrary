@@ -35,7 +35,7 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
             String password = null;
 
 
-            String sql = "SELECT FROM User WHERE UserId = ?";
+            String sql = "SELECT * FROM User WHERE UserId = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1,id);
             ResultSet rs = ps.executeQuery();

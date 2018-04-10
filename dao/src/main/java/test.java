@@ -13,6 +13,6 @@ public class test {
         System.out.println("test");
         User user = new User(1, "name1", "password");
         User user2 = new User(2, "name2", "password3");
-       // userDAOSql.getUser(1);
+        System.out.println(userDAOSql.getUser(1).toString());
     }
 }

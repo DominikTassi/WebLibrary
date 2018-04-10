@@ -49,4 +49,12 @@ public class Stock {
         result = 31 * result + piece;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "book=" + book +
+                ", piece=" + piece +
+                '}';
+    }
 }
