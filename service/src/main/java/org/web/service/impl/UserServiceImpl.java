@@ -4,6 +4,7 @@ import org.web.core.model.User;
 import org.web.core.service.UserService;
 import org.web.service.dao.UserDAO;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 public class UserServiceImpl implements UserService{
@@ -13,11 +14,11 @@ public class UserServiceImpl implements UserService{
         this.userDAO = userDAO;
     }
 
-    public User getUser(User user) throws NoUserException {
+    public User getUser(User user) throws NoUserException, SQLException {
         return userDAO.getUser(user);
     }
 
-    public User getUser(int id) throws NoUserException {
+    public User getUser(int id) throws NoUserException, SQLException {
         return userDAO.getUser(id);
     }
 
