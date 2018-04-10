@@ -2,6 +2,7 @@ import org.web.core.exceptions.*;
 import org.web.core.model.*;
 import org.web.service.dao.BookDAO;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,9 +13,9 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
 
     private Connection connection = openConnection();
 
-    private Statement statement;
 
     public BookDAOsql() throws SQLException, ClassNotFoundException {
+        DataBaseInit.getInstance();
     }
 
     @Override
