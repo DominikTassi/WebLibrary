@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
         return userDAO.getUser(id);
     }
 
-    public Collection<User> getAllUser() {
+    public Collection<User> getAllUser() throws SQLException {
         return userDAO.getAllUser();
     }
 
@@ -31,11 +31,11 @@ public class UserServiceImpl implements UserService{
     }
 
 
-    public boolean deleteUser(User user) {
+    public boolean deleteUser(User user) throws SQLException {
         return userDAO.deleteUser(user);
     }
 
-    public boolean deleteUser(int id) {
+    public boolean deleteUser(int id) throws SQLException {
         return userDAO.deleteUser(id);
     }
 }
