@@ -14,10 +14,11 @@ public class Book {
     private Date publicationDate;
     private Nationality language;
 
-    public Book(int ISBN, String name, Subject subject, Author author, Publisher publisher, Date publicationDate, Nationality language) throws NoPublicationDateException, NoPublisherException, NoAuthorException, NoSubjectException, NoNameException, WrongISBNException {
+    public Book(int ISBN, String name, Subject subject, Author author, int price, Publisher publisher, Date publicationDate, Nationality language) throws NoPublicationDateException, NoPublisherException, NoAuthorException, NoSubjectException, NoNameException, WrongISBNException, WrongPriceException {
         setISBN(ISBN);
         setName(name);
         setSubject(subject);
+        setPrice(price);
         setAuthor(author);
         setPublisher(publisher);
         setPublicationDate(publicationDate);

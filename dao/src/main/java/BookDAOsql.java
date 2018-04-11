@@ -3,16 +3,14 @@ import org.web.core.model.*;
 import org.web.service.dao.BookDAO;
 
 import javax.xml.crypto.Data;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Collection;
 import java.util.Date;
 
 public class BookDAOsql extends DataBaseInit implements BookDAO {
 
     private Connection connection = openConnection();
-
+    private String url = DataBaseInit.url;
 
     public BookDAOsql() throws SQLException, ClassNotFoundException {
         DataBaseInit.getInstance();
@@ -20,7 +18,55 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
 
     @Override
     public Book getBookByISBN(int ISBN) throws WrongISBNException {
-        return null;
+        Book book = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(url);
+            connection.setAutoCommit(false);
+
+            int localISBN = 0;
+            String name = null;
+            Subject subject = null;
+            Author author = null;
+            int price = 0;
+            Publisher publisher = null;
+            Date publicationDate = null;
+            Nationality language = null;
+
+            String sql = "SELECT * FROM Book WHERE ISBN = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, ISBN);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                localISBN = rs.getInt("ISBN");
+                name = rs.getString("Name");
+                subject.setName(rs.getString(""));
+            }
+            book = new Book(localISBN, name, subject,author, price ,publisher,publicationDate,language);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NoNameException e) {
+            e.printStackTrace();
+        } catch (NoSubjectException e) {
+            e.printStackTrace();
+        } catch (NoPublicationDateException e) {
+            e.printStackTrace();
+        } catch (NoPublisherException e) {
+            e.printStackTrace();
+        } catch (NoAuthorException e) {
+            e.printStackTrace();
+        } catch (WrongPriceException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return book;
     }
 
     @Override
