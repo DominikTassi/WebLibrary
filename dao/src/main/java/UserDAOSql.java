@@ -101,7 +101,8 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
 
     @Override
     public Collection<User> getAllUser() throws SQLException {
-K        try{
+        Collection<User> userList = new ArrayList<>();
+        try{
             int id = 0;
             String password = null;
             String name = null;
