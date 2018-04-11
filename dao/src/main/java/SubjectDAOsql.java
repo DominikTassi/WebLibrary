@@ -106,8 +106,8 @@ public class SubjectDAOsql extends DataBaseInit implements SubjectDAO {
             if(rs.next()){
                 subjectId = rs.getInt("SubjectId");
                 name = rs.getString("Name");
+                allSubject.add(new Subject(subjectId, name));
             }
-            allSubject.add(new Subject(subjectId, name));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
