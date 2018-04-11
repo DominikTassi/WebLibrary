@@ -54,12 +54,74 @@ public class SubjectDAOsql extends DataBaseInit implements SubjectDAO {
 
     @Override
     public Subject getSubject(Subject subject) throws NoSubjectException {
-        return null;
+        Subject localSubject = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(url);
+            connection.setAutoCommit(false);
+
+            int subjectId = 0;
+            String name = null;
+
+
+            String sql = "SELECT * FROM User WHERE SubjectId = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,subject.getId());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                subjectId = rs.getInt("SubjectId");
+                name = rs.getString("Name");
+            }
+            subject = new Subject(subjectId, name);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }catch (NoNameException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return localSubject;
     }
 
     @Override
     public Collection<Subject> getAllSubject() {
-        return null;
+        Collection<Subject> allSubject = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(url);
+            connection.setAutoCommit(false);
+
+            int subjectId = 0;
+            String name = null;
+
+            String sql = "SELECT * FROM User";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                subjectId = rs.getInt("SubjectId");
+                name = rs.getString("Name");
+            }
+            allSubject.add(new Subject(subjectId, name));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }catch (NoNameException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return allSubject;
     }
 
     @Override
