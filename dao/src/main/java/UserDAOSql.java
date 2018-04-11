@@ -4,7 +4,6 @@ import org.web.core.exceptions.NoUserException;
 import org.web.core.model.User;
 import org.web.service.dao.UserDAO;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
