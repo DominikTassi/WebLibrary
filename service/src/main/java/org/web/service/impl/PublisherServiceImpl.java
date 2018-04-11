@@ -5,6 +5,7 @@ import org.web.core.model.Publisher;
 import org.web.core.service.PublisherService;
 import org.web.service.dao.PublisherDAO;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 public class PublisherServiceImpl implements PublisherService{
@@ -15,15 +16,15 @@ public class PublisherServiceImpl implements PublisherService{
         this.publisherDAO = publisherDAO;
     }
 
-    public Publisher getPublisher(int id) throws NoPublisherException {
+    public Publisher getPublisher(int id) throws NoPublisherException, SQLException {
         return publisherDAO.getPublisher(id);
     }
 
-    public Publisher getPublisher(Publisher publisher) throws NoPublisherException {
+    public Publisher getPublisher(Publisher publisher) throws NoPublisherException, SQLException {
         return publisherDAO.getPublisher(publisher);
     }
 
-    public void addPublisher(Publisher publisher) {
+    public void addPublisher(Publisher publisher) throws SQLException {
         publisherDAO.addPublisher(publisher);
     }
 
