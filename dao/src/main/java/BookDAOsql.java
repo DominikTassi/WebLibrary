@@ -57,8 +57,7 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
             psSubject.setInt(1, subjectId);
             ResultSet rsSubject = psSubject.executeQuery();
             if(rsSubject.next()){
-                subject.setId(rsSubject.getInt("SubjectId"));
-                subject.setName(rsSubject.getString("SubjectName"));
+                subject = new Subject(rsSubject.getInt("SubjectId"), rsSubject.getString("SubjectName"));
             }
 
 
@@ -67,10 +66,7 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
             psAuthor.setInt(1, authorId);
             ResultSet rsAuthor = psAuthor.executeQuery();
             if(rsAuthor.next()){
-                author.setId(rsAuthor.getInt("AuthorId"));
-                author.setName(rsAuthor.getString("AuthorName"));
-                author.setBirth(rsAuthor.getDate("AuthorBith"));
-                author.setNationality(Nationality.valueOf(rsAuthor.getString("Nationality")));
+                author = new Author(rsAuthor.getInt("AuthorId"), rsAuthor.getString("AuthorName"), rsAuthor.getDate("AuthorBith"), Nationality.valueOf(rsAuthor.getString("Nationality")));
             }
 
 
@@ -79,8 +75,7 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
             psPublisher.setInt(1, publisherId);
             ResultSet rsPublisher = psPublisher.executeQuery();
             if(rsPublisher.next()){
-                publisher.setId(rsPublisher.getInt("PublisherId"));
-                publisher.setName(rsPublisher.getString("PublisherName"));
+                publisher = new Publisher(rsPublisher.getInt("PublisherId"), rsPublisher.getString("PublisherName"));
             }
 
 
