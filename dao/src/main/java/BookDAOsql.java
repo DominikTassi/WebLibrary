@@ -40,7 +40,17 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
             if(rs.next()){
                 localISBN = rs.getInt("ISBN");
                 name = rs.getString("Name");
-                subject.setName(rs.getString(""));
+                subject.setId(rs.getInt("Id"));
+                subject.setName(rs.getString("Name"));
+                author.setId(rs.getInt("Id"));
+                author.setName(rs.getString("Name"));
+                author.setBirth(rs.getDate("Birth"));
+                author.setNationality(Nationality.valueOf(rs.getString("Nationality")));
+                price = rs.getInt("Price");
+                publisher.setId(rs.getInt("Id"));
+                publisher.setName("Name");
+                publicationDate = rs.getDate("PublicationDate");
+                language = Nationality.valueOf(rs.getString("Language"));
             }
             book = new Book(localISBN, name, subject,author, price ,publisher,publicationDate,language);
         } catch (ClassNotFoundException e) {
@@ -58,6 +68,8 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
         } catch (NoAuthorException e) {
             e.printStackTrace();
         } catch (WrongPriceException e) {
+            e.printStackTrace();
+        } catch (NoBirthDateException e) {
             e.printStackTrace();
         } finally {
             try {

@@ -39,6 +39,10 @@ public class Author {
         this.birth = birth;
     }
 
+    public void setNationality(Nationality nationality) {
+        this.nationality = nationality;
+    }
+
     public Author(int id, String name, Date birth, Nationality nationality) throws NoNameException, NoBirthDateException {
         this.id = id;
         setName(name);

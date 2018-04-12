@@ -5,6 +5,7 @@ import org.web.core.model.Author;
 import org.web.core.service.AuthorService;
 import org.web.service.dao.AuthorDAO;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 
@@ -28,7 +29,7 @@ public class AuthorServiceImpl implements AuthorService {
         return authorDAO.getAuthor(name);
     }
 
-    public Collection<Author> getAllAuthor() {
+    public Collection<Author> getAllAuthor() throws SQLException {
         return authorDAO.getAllAuthor();
     }
 }
