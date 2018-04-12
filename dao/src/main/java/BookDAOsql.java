@@ -19,6 +19,9 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
     @Override
     public Book getBookByISBN(int ISBN) throws WrongISBNException {
         Book book = null;
+        Subject subject = null;
+        Author author = null;
+        Publisher publisher = null;
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
@@ -26,32 +29,61 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
 
             int localISBN = 0;
             String name = null;
-            Subject subject = null;
-            Author author = null;
+            int subjectId = 0;
+            int authorId = 0;
             int price = 0;
-            Publisher publisher = null;
+            int publisherId = 0;
             Date publicationDate = null;
             Nationality language = null;
 
-            String sql = "SELECT * FROM Book WHERE ISBN = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, ISBN);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                localISBN = rs.getInt("ISBN");
-                name = rs.getString("Name");
-                subject.setId(rs.getInt("Id"));
-                subject.setName(rs.getString("Name"));
-                author.setId(rs.getInt("Id"));
-                author.setName(rs.getString("Name"));
-                author.setBirth(rs.getDate("Birth"));
-                author.setNationality(Nationality.valueOf(rs.getString("Nationality")));
-                price = rs.getInt("Price");
-                publisher.setId(rs.getInt("Id"));
-                publisher.setName("Name");
-                publicationDate = rs.getDate("PublicationDate");
-                language = Nationality.valueOf(rs.getString("Language"));
+            String sqlBook = "SELECT * FROM Book WHERE ISBN = ?";
+            PreparedStatement psBook = connection.prepareStatement(sqlBook);
+            psBook.setInt(1, ISBN);
+            ResultSet rsBook = psBook.executeQuery();
+            if(rsBook.next()){
+                localISBN = rsBook.getInt("ISBN");
+                name = rsBook.getString("BookName");
+                subjectId = rsBook.getInt("SubjectId");
+                authorId = rsBook.getInt("AuthorId");
+                price = rsBook.getInt("BookPrice");
+                publisherId = rsBook.getInt("PublisherId");
+                publicationDate = rsBook.getDate("BookPublicationDate");
+                language = Nationality.valueOf(rsBook.getString("BookLanguage"));
             }
+
+
+            String sqlSubject = "SELECT * FROM Subject WHERE SubjectId = ?";
+            PreparedStatement psSubject = connection.prepareStatement(sqlSubject);
+            psSubject.setInt(1, subjectId);
+            ResultSet rsSubject = psSubject.executeQuery();
+            if(rsSubject.next()){
+                subject.setId(rsSubject.getInt("SubjectId"));
+                subject.setName(rsSubject.getString("SubjectName"));
+            }
+
+
+            String sqlAuthor = "SELECT * FROM Author WHERE AuthorId = ?";
+            PreparedStatement psAuthor = connection.prepareStatement(sqlAuthor);
+            psAuthor.setInt(1, authorId);
+            ResultSet rsAuthor = psAuthor.executeQuery();
+            if(rsAuthor.next()){
+                author.setId(rsAuthor.getInt("AuthorId"));
+                author.setName(rsAuthor.getString("AuthorName"));
+                author.setBirth(rsAuthor.getDate("AuthorBith"));
+                author.setNationality(Nationality.valueOf(rsAuthor.getString("Nationality")));
+            }
+
+
+            String sqlPublisher = "SELECT * FROM Publisher WHERE PublisherId = ?";
+            PreparedStatement psPublisher = connection.prepareStatement(sqlPublisher);
+            psPublisher.setInt(1, publisherId);
+            ResultSet rsPublisher = psPublisher.executeQuery();
+            if(rsPublisher.next()){
+                publisher.setId(rsPublisher.getInt("PublisherId"));
+                publisher.setName(rsPublisher.getString("PublisherName"));
+            }
+
+
             book = new Book(localISBN, name, subject,author, price ,publisher,publicationDate,language);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
