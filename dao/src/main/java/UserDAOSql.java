@@ -35,7 +35,7 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 userId = rs.getInt("UserId");
-                name = rs.getString("Name");
+                name = rs.getString("UserName");
                 password = rs.getString("Password");
             }
             user = new User(userId, name, password);
@@ -76,7 +76,7 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 userId = rs.getInt("UserId");
-                name = rs.getString("Name");
+                name = rs.getString("userName");
                 password = rs.getString("Password");
             }
             user = new User(userId, name, password);
@@ -114,7 +114,7 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 id = rs.getInt("UserId");
-                name = rs.getString("Name");
+                name = rs.getString("UserName");
                 password = rs.getString("Password");
                 userList.add(new User(id, name, password));
             }
@@ -133,7 +133,7 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO User (UserId, Name, Password) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO User (UserId, UserName, Password) VALUES(?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, user.getId());
             ps.setString(2, user.getName());

@@ -34,7 +34,7 @@ public class PublisherDAOSql extends DataBaseInit implements PublisherDAO{
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 publisherId = rs.getInt("PublisherId");
-                publisherName = rs.getString("Name");
+                publisherName = rs.getString("PublisherName");
             }
             publisher = new Publisher(publisherId, publisherName);
         } catch (ClassNotFoundException e) {
@@ -65,7 +65,7 @@ public class PublisherDAOSql extends DataBaseInit implements PublisherDAO{
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 publisherId = rs.getInt("PublisherId");
-                publisherName = rs.getString("Name");
+                publisherName = rs.getString("PublisherName");
             }
             publisher = new Publisher(publisherId, publisherName);
         } catch (ClassNotFoundException e) {
@@ -86,7 +86,7 @@ public class PublisherDAOSql extends DataBaseInit implements PublisherDAO{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Publisher (PublisherId, Name) VALUES (?, ?)";
+            String sql = "INSERT INTO Publisher (PublisherId, PublisherName) VALUES (?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, publisher.getId());
             ps.setString(2, publisher.getName());

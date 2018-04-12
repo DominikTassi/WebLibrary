@@ -64,8 +64,8 @@ public class AuthorDAOsql extends DataBaseInit implements AuthorDAO {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 authorId = rs.getInt("AuthorId");
-                name = rs.getString("Name");
-                birth = rs.getDate("BirthDate");
+                name = rs.getString("AuthorName");
+                birth = rs.getDate("AuthorBith");
                 nationality = Nationality.valueOf(rs.getString("Nationality"));
             }
             author = new Author(authorId, name, birth, nationality);
@@ -107,8 +107,8 @@ public class AuthorDAOsql extends DataBaseInit implements AuthorDAO {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 authorId = rs.getInt("AuthorId");
-                authirName = rs.getString("Name");
-                birth = rs.getDate("BirthDate");
+                authirName = rs.getString("AuthorName");
+                birth = rs.getDate("AuthorBirth");
                 nationality = Nationality.valueOf(rs.getString("Nationality"));
             }
             author = new Author(authorId, authirName, birth, nationality);
@@ -147,8 +147,8 @@ public class AuthorDAOsql extends DataBaseInit implements AuthorDAO {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 id = rs.getInt("AuthorId");
-                name = rs.getString("Name");
-                birth = rs.getDate("BirthData");
+                name = rs.getString("AuthorName");
+                birth = rs.getDate("AuthorBirth");
                 nationality = Nationality.valueOf(rs.getString("Nationality"));
                 authors.add(new Author(id, name, birth, nationality));
             }

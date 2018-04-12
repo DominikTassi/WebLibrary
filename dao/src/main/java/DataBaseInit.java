@@ -53,52 +53,53 @@ public class DataBaseInit {
                 String sql = "CREATE TABLE Book\n" +
                         "(\n" +
                         "    ISBN INT PRIMARY KEY,\n" +
-                        "    Name VARCHAR(255) NOT NULL,\n" +
+                        "    BookName VARCHAR(255) NOT NULL,\n" +
                         "    SubjectId INT NOT NULL,\n" +
                         "    AuthorId INT NOT NULL,\n" +
-                        "    Price INT NOT NULL,\n" +
+                        "    BookPrice INT NOT NULL,\n" +
                         "    PublisherId INT NOT NULL,\n" +
-                        "    Date DATE NOT NULL,\n" +
-                        "    Language INT NOT NULL\n" +
+                        "    BookPublicationDate DATE NOT NULL,\n" +
+                        "    BookLanguage INT NOT NULL\n" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Author(" +
                         "   AuthorId INT PRIMARY KEY NOT NULL," +
-                        "   Name VARCHAR(255) NOT NULL," +
-                        "   Birth DATE NOT NULL," +
+                        "   AuthorName VARCHAR(255) NOT NULL," +
+                        "   AuthorBirth DATE NOT NULL," +
                         "   Nationality VARCHAR(255) NOT NULL" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Borrow(" +
+                        "   BorrowId INT PRIMARY KEY NOT NULL," +
                         "   BookId INT PRIMARY KEY NOT NULL," +
                         "   UserId INT NOT NULL," +
-                        "   Date DATE NOT NULL" +
+                        "   BorrowDate DATE NOT NULL" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Publisher(" +
                         "   PublisherId INT PRIMARY KEY NOT NULL," +
-                        "   Name VARCHAR(255) NOT NULL" +
+                        "   PublisherName VARCHAR(255) NOT NULL" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Stock(" +
                         "   BookId INT PRIMARY KEY NOT NULL," +
-                        "   Piece INT NOT NULL" +
+                        "   BookPiece INT NOT NULL" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Subject(" +
-                        "   Id INT PRIMARY KEY NOT NULL," +
-                        "   Subject VARCHAR(255) NOT NULL" +
+                        "   SubjectId INT PRIMARY KEY NOT NULL," +
+                        "   SubjectName VARCHAR(255) NOT NULL" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE User(" +
                         "   UserId INT PRIMARY KEY NOT NULL," +
-                        "   Name VARCHAR(255) NOT NULL," +
+                        "   UserName VARCHAR(255) NOT NULL," +
                         "   Password VARCHAR (255) NOT NULL" +
                         ");";
                 statement.execute(sql);

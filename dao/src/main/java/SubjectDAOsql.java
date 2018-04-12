@@ -100,12 +100,12 @@ public class SubjectDAOsql extends DataBaseInit implements SubjectDAO {
             int subjectId = 0;
             String name = null;
 
-            String sql = "SELECT * FROM User";
+            String sql = "SELECT * FROM Subject";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 subjectId = rs.getInt("SubjectId");
-                name = rs.getString("Name");
+                name = rs.getString("SubjectName");
                 allSubject.add(new Subject(subjectId, name));
             }
         } catch (ClassNotFoundException e) {
@@ -130,7 +130,7 @@ public class SubjectDAOsql extends DataBaseInit implements SubjectDAO {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO User (SubjectId, Name) VALUES(?, ?)";
+            String sql = "INSERT INTO Subject (SubjectId, SubjectName) VALUES(?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, subject.getId());
             ps.setString(2, subject.getName());
