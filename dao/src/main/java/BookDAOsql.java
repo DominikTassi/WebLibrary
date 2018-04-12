@@ -66,7 +66,7 @@ public class BookDAOsql extends DataBaseInit implements BookDAO {
             psAuthor.setInt(1, authorId);
             ResultSet rsAuthor = psAuthor.executeQuery();
             if(rsAuthor.next()){
-                author = new Author(rsAuthor.getInt("AuthorId"), rsAuthor.getString("AuthorName"), rsAuthor.getDate("AuthorBith"), Nationality.valueOf(rsAuthor.getString("Nationality")));
+                author = new Author(rsAuthor.getInt("AuthorId"), rsAuthor.getString("AuthorName"), rsAuthor.getDate("AuthorBirth"), Nationality.valueOf(rsAuthor.getString("Nationality")));
             }
 
 
