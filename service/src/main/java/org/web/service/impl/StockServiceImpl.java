@@ -17,12 +17,12 @@ public class StockServiceImpl implements StockService {
         this.stockDAO = stockDAO;
     }
 
-    public Stock getStock(Book book) throws NoBookException {
-        return stockDAO.getStock(book);
+    public Stock getStock(int ISBN) throws NoBookException {
+        return stockDAO.getStock(ISBN);
     }
 
-    public Stock getStock(Stock stock) throws NoStockException {
-        return stockDAO.getStock(stock);
+    public Stock getStock(String bookName) throws NoStockException {
+        return stockDAO.getStock(bookName);
     }
 
     public void addStock(Stock stock) {
