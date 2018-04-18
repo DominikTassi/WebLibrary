@@ -19,15 +19,16 @@ public class AuthorDAOsql extends DataBaseInit implements AuthorDAO {
     }
 
     @Override
-    public void addAuthor(Author author) throws NoAuthorException {
+    public void addAuthor(String authorName, String authorbirthDate, String authorNationality) throws NoAuthorException {
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Author (AuthorId, Name) VALUES(?, ?)";
+            String sql = "INSERT INTO Author (AuthorName, AuthorBirth,Nationality) VALUES(?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, author.getId());
-            ps.setString(2, author.getName());
+            ps.setString(1, authorName);
+            ps.setString(2, authorbirthDate);
+            ps.setString(3, authorNationality);
             ps.executeUpdate();
             connection.commit();
         } catch (ClassNotFoundException e) {
@@ -101,7 +102,7 @@ public class AuthorDAOsql extends DataBaseInit implements AuthorDAO {
             Nationality nationality = null;
 
 
-            String sql = "SELECT * FROM User WHERE Name = ?";
+            String sql = "SELECT * FROM User WHERE AuthorName = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1,name);
             ResultSet rs = ps.executeQuery();

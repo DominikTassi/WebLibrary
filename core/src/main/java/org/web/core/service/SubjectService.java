@@ -10,5 +10,5 @@ public interface SubjectService {
     public Subject getSubject(Subject subject) throws NoSubjectException;
     public Collection<Subject> getAllSubject();
 
-    public void addSubject(Subject subject);
+    public void addSubject(String subjectName);
 }

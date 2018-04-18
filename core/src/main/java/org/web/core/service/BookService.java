@@ -3,6 +3,7 @@ package org.web.core.service;
 import org.web.core.exceptions.*;
 import org.web.core.model.*;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -18,8 +19,8 @@ public interface BookService {
     public Collection<Book> getBooksByYear(Date date);
 
     public void addBook(Book book) throws NoBookException;
-    public boolean deleteBook(int id) throws NoBookException;
-    public boolean deleteBook(Book book) throws NoBookException;
+    public boolean deleteBook(int id) throws NoBookException, SQLException;
+    public boolean deleteBook(Book book) throws NoBookException, SQLException;
 
     public Collection<Book> getCheaperBooksThanPrice(int price);
 }

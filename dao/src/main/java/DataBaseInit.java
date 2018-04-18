@@ -64,7 +64,7 @@ public class DataBaseInit {
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Author(" +
-                        "   AuthorId INT PRIMARY KEY NOT NULL," +
+                        "   AuthorId INT PRIMARY KEY NOT NULL AUTOINCREMENT," +
                         "   AuthorName VARCHAR(255) NOT NULL," +
                         "   AuthorBirth DATE NOT NULL," +
                         "   Nationality VARCHAR(255) NOT NULL" +
@@ -80,8 +80,8 @@ public class DataBaseInit {
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Publisher(" +
-                        "   PublisherId INT PRIMARY KEY NOT NULL," +
-                        "   PublisherName VARCHAR(255) NOT NULL" +
+                        "   PublisherId INT NOT NULL AUTOINCREMENT," +
+                        "   PublisherName VARCHAR(255) PRIMARY KEY NOT NULL" +
                         ");";
                 statement.execute(sql);
 
@@ -92,14 +92,14 @@ public class DataBaseInit {
                 statement.execute(sql);
 
                 sql = "CREATE TABLE Subject(" +
-                        "   SubjectId INT PRIMARY KEY NOT NULL," +
-                        "   SubjectName VARCHAR(255) NOT NULL" +
+                        "   SubjectId INT NOT NULL AUTOINCREMENT," +
+                        "   SubjectName VARCHAR(255) PRIMARY KEY NOT NULL" +
                         ");";
                 statement.execute(sql);
 
                 sql = "CREATE TABLE User(" +
-                        "   UserId INT PRIMARY KEY NOT NULL," +
-                        "   UserName VARCHAR(255) NOT NULL," +
+                        "   UserId INT NOT NULL AUTOINCREMENT," +
+                        "   UserName VARCHAR(255) PRIMARY KEY NOT NULL," +
                         "   Password VARCHAR (255) NOT NULL" +
                         ");";
                 statement.execute(sql);

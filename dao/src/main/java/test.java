@@ -15,7 +15,6 @@ public class test {
 
         System.out.println("test");
 
-
         Book book = bookDAOsql.getBookByISBN(1);
         System.out.println(book.toString());
         System.out.println(book.getPublisher().getName());

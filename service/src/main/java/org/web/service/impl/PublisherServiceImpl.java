@@ -24,8 +24,8 @@ public class PublisherServiceImpl implements PublisherService{
         return publisherDAO.getPublisher(publisher);
     }
 
-    public void addPublisher(Publisher publisher) throws SQLException {
-        publisherDAO.addPublisher(publisher);
+    public void addPublisher(String publisherName) throws SQLException {
+        publisherDAO.addPublisher(publisherName);
     }
 
     public Collection<Book> getAllPublisher() {

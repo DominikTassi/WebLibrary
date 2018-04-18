@@ -17,8 +17,8 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorDAO = authorDAO;
     }
 
-    public void addAuthor(Author author) throws NoAuthorException {
-        authorDAO.addAuthor(author);
+    public void addAuthor(String authorName, String authorBirthDate, String authorNationality) throws NoAuthorException {
+        authorDAO.addAuthor(authorName, authorNationality, authorBirthDate);
     }
 
     public Author getAuthor(int id) throws NoAuthorException {

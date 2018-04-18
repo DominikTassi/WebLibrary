@@ -18,27 +18,26 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
     }
 
     @Override
-    public User getUser(User user) throws NoUserException {
+    public User getUser(String userName) throws NoUserException {
+        User user = null;
+        int userId = 0;
+        String name = null;
+        String password = null;
+
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-
-            int userId = 0;
-            String name = null;
-            String password = null;
-
-
-            String sql = "SELECT * FROM User WHERE UserId = ?";
+            String sql = "SELECT * FROM User WHERE UserName = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1,user.getId());
+            ps.setString(1,userName);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 userId = rs.getInt("UserId");
                 name = rs.getString("UserName");
                 password = rs.getString("Password");
             }
-            user = new User(userId, name, password);
+           user = new User(userId, name, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -128,16 +127,15 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
     }
 
     @Override
-    public void addUser(User user) {
+    public void addUser(String userName, String password) {
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO User (UserId, UserName, Password) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO User (UserName, Password) VALUES(?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, user.getId());
-            ps.setString(2, user.getName());
-            ps.setString(3, user.getPassword());
+            ps.setString(1, userName);
+            ps.setString(2, password);
             ps.executeUpdate();
             connection.commit();
         } catch (ClassNotFoundException e) {
@@ -155,14 +153,14 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
     }
 
     @Override
-    public boolean deleteUser(User user) throws SQLException {
+    public boolean deleteUser(String userName) throws SQLException {
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "DELETE FROM User WHERE UserId = ?";
+            String sql = "DELETE FROM User WHERE UserName = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, user.getId());
+            ps.setString(1, userName);
             ps.executeUpdate();
             connection.commit();
         } catch (ClassNotFoundException e) {

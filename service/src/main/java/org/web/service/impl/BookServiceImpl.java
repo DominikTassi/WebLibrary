@@ -4,6 +4,7 @@ import org.web.core.model.*;
 import org.web.core.service.BookService;
 import org.web.service.dao.BookDAO;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -55,11 +56,11 @@ public class BookServiceImpl implements BookService {
         bookDAO.addBook(book);
     }
 
-    public boolean deleteBook(int id) throws NoBookException {
+    public boolean deleteBook(int id) throws NoBookException, SQLException {
         return bookDAO.deleteBook(id);
     }
 
-    public boolean deleteBook(Book book) throws NoBookException {
+    public boolean deleteBook(Book book) throws NoBookException, SQLException {
         return bookDAO.deleteBook(book);
     }
 

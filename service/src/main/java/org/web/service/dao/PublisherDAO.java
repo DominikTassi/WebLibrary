@@ -11,6 +11,6 @@ public interface PublisherDAO {
     public Publisher getPublisher(int id) throws NoPublisherException, SQLException;
     public Publisher getPublisher(Publisher publisher) throws NoPublisherException, SQLException;
 
-    public void addPublisher(Publisher publisher) throws SQLException;
+    public void addPublisher(String publisherName) throws SQLException;
     public Collection<Book> getAllPublisher();
 }

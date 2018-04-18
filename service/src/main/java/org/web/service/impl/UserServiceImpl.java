@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService{
         this.userDAO = userDAO;
     }
 
-    public User getUser(User user) throws NoUserException, SQLException {
+    public User getUser(String user) throws NoUserException, SQLException {
         return userDAO.getUser(user);
     }
 
@@ -26,12 +26,12 @@ public class UserServiceImpl implements UserService{
         return userDAO.getAllUser();
     }
 
-    public void addUser(User user) {
+    public void addUser(String userName, String password) {
         userDAO.addUser(user);
     }
 
 
-    public boolean deleteUser(User user) throws SQLException {
+    public boolean deleteUser(String userName) throws SQLException {
         return userDAO.deleteUser(user);
     }
 

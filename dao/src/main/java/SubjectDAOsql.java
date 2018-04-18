@@ -125,15 +125,14 @@ public class SubjectDAOsql extends DataBaseInit implements SubjectDAO {
     }
 
     @Override
-    public void addSubject(Subject subject) {
+    public void addSubject(String subjectName) {
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Subject (SubjectId, SubjectName) VALUES(?, ?)";
+            String sql = "INSERT INTO Subject (SubjectName) VALUES(?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, subject.getId());
-            ps.setString(2, subject.getName());
+            ps.setString(1, subjectName);
             ps.executeUpdate();
             connection.commit();
         } catch (ClassNotFoundException e) {

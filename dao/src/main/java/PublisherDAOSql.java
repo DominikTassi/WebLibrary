@@ -81,15 +81,14 @@ public class PublisherDAOSql extends DataBaseInit implements PublisherDAO{
     }
 
     @Override
-    public void addPublisher(Publisher publisher) throws SQLException {
+    public void addPublisher(String publisherName) throws SQLException {
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(url);
             connection.setAutoCommit(false);
-            String sql = "INSERT INTO Publisher (PublisherId, PublisherName) VALUES (?, ?)";
+            String sql = "INSERT INTO Publisher (PublisherName) VALUES (?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, publisher.getId());
-            ps.setString(2, publisher.getName());
+            ps.setString(1, publisherName);
             ps.executeUpdate();
             connection.commit();
         } catch (ClassNotFoundException e) {
