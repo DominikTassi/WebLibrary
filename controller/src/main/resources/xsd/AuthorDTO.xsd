@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="authorRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AuthorId" type="xs:int"/>
+                <xs:element name="AuthorName" type="xs:string"/>
+                <xs:element name="AuthorBirth" type="xs:date"/>
+                <xs:element name="Nationality" type="xs:string">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ENGLISH"/>
+                            <xs:enumeration value="HUNGARIAN"/>
+                            <xs:enumeration value="GREEK"/>
+                            <xs:enumeration value="AMERICAN"/>
+                            <xs:enumeration value="MEXICAN"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

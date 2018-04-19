@@ -9,6 +9,7 @@
     <module>core</module>
       <module>service</module>
       <module>dao</module>
+      <module>controller</module>
   </modules>
   <packaging>pom</packaging>
 

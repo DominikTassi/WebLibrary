@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="userRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="UserId" type="xs:int"/>
+                <xs:element name="UserName" type="xs:string"/>
+                <xs:element name="Password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -75,7 +75,7 @@ public class UserDAOSql extends DataBaseInit implements UserDAO{
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 userId = rs.getInt("UserId");
-                name = rs.getString("userName");
+                name = rs.getString("UserName");
                 password = rs.getString("Password");
             }
             user = new User(userId, name, password);
