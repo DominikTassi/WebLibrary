@@ -26,6 +26,6 @@ public class SubjectServiceImpl implements SubjectService{
     }
 
     public void addSubject(String subjectName) {
-        subjectDAO.addSubject(subject);
+        subjectDAO.addSubject(subjectName);
     }
 }

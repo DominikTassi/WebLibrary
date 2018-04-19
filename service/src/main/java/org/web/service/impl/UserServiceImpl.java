@@ -27,12 +27,12 @@ public class UserServiceImpl implements UserService{
     }
 
     public void addUser(String userName, String password) {
-        userDAO.addUser(user);
+        userDAO.addUser(userName,password);
     }
 
 
     public boolean deleteUser(String userName) throws SQLException {
-        return userDAO.deleteUser(user);
+        return userDAO.deleteUser(userName);
     }
 
     public boolean deleteUser(int id) throws SQLException {
